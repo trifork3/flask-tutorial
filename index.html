@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+
+    <!-- include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <h1>[ NOTES APP ]</h1>
+
+    <form action="/add" method="post">
+        <div class="form-group">
+            <input type="text" name="text" placeholder="Write here!">
+            <br>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </form>
+
+    {% for note in notes_list %}
+        <div class="card">
+            <div class="card-body">
+                <p>{{ note.id }} | {{ note.date }}</p>
+                <p>{{ note.text }}</p>
+
+                <a href="/delete/{{ note.id }}">Delete</a>
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>
